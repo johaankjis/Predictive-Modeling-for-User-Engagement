@@ -168,13 +168,13 @@ Predictive-Modeling-for-User-Engagement/
 │   ├── evaluation_report.json    # Model metrics
 │   ├── feature_importance.json   # Feature analysis
 │   └── data_summary.json         # Dataset statistics
-├── models/                       # Trained models (generated)
+├── models/                       # Trained models (generated after running pipeline)
 │   ├── logistic_regression.pkl
 │   ├── random_forest.pkl
 │   ├── gradient_boosting.pkl
 │   ├── scaler.pkl
 │   └── training_metadata.json
-├── data/                         # Generated datasets
+├── data/                         # Generated datasets (created by ML pipeline)
 │   ├── user_engagement_data.csv
 │   └── engineered_features.csv
 ├── hooks/                        # React custom hooks
@@ -258,10 +258,16 @@ data:
   random_state: 42          # Reproducibility seed
 
 models:
+  logistic_regression:
+    max_iter: 1000
+    random_state: 42
   random_forest:
     n_estimators: 100       # Number of trees
     max_depth: 10           # Tree depth
-  # ... additional model configs
+  gradient_boosting:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 5
 
 evaluation:
   target_accuracy: 0.85     # Success threshold
