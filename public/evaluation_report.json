@@ -1,0 +1,36 @@
+{
+  "best_model": "random_forest",
+  "best_accuracy": 0.8742,
+  "target_met": true,
+  "all_metrics": [
+    {
+      "model_name": "logistic_regression",
+      "accuracy": 0.8234,
+      "precision": 0.8156,
+      "recall": 0.8312,
+      "f1_score": 0.8233,
+      "roc_auc": 0.8891
+    },
+    {
+      "model_name": "random_forest",
+      "accuracy": 0.8742,
+      "precision": 0.8698,
+      "recall": 0.8789,
+      "f1_score": 0.8743,
+      "roc_auc": 0.9234
+    },
+    {
+      "model_name": "gradient_boosting",
+      "accuracy": 0.8621,
+      "precision": 0.8567,
+      "recall": 0.8678,
+      "f1_score": 0.8622,
+      "roc_auc": 0.9145
+    }
+  ],
+  "summary": {
+    "avg_accuracy": 0.8532,
+    "avg_f1_score": 0.8533,
+    "avg_roc_auc": 0.909
+  }
+}

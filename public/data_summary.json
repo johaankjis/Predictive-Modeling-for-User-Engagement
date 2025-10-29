@@ -1,0 +1,16 @@
+{
+  "total_records": 10000,
+  "engagement_rate": 0.342,
+  "avg_session_duration": 8.7,
+  "avg_page_views": 5.3,
+  "device_distribution": {
+    "desktop": 4523,
+    "mobile": 3891,
+    "tablet": 1586
+  },
+  "segment_distribution": {
+    "new_user": 2847,
+    "returning_user": 4312,
+    "power_user": 2841
+  }
+}
