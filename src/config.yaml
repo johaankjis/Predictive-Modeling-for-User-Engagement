@@ -1,0 +1,48 @@
+# Environment Configuration for Predictive User Engagement MVP
+
+data:
+  sample_size: 10000
+  train_test_split: 0.8
+  random_state: 42
+  
+features:
+  numerical:
+    - session_duration
+    - page_views
+    - click_rate
+    - days_since_signup
+    - total_sessions
+    - avg_session_length
+  categorical:
+    - device_type
+    - user_segment
+    - traffic_source
+  target: engaged
+
+models:
+  logistic_regression:
+    max_iter: 1000
+    random_state: 42
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+  gradient_boosting:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 5
+    random_state: 42
+
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - roc_auc
+  target_accuracy: 0.85
+
+output:
+  model_path: "models/"
+  results_path: "results/"
+  plots_path: "public/plots/"
