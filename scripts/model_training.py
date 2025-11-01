@@ -15,16 +15,16 @@ from datetime import datetime
 
 def load_engineered_data(filepath='data/engineered_features.csv'):
     """Load the feature-engineered dataset"""
-    print(f"[v0] Loading engineered data from {filepath}...")
+    print(f"[] Loading engineered data from {filepath}...")
     df = pd.read_csv(filepath)
-    print(f"[v0] Loaded {len(df)} records with {len(df.columns)} features")
+    print(f"[] Loaded {len(df)} records with {len(df.columns)} features")
     return df
 
 def prepare_train_test_split(df, test_size=0.2, random_state=42):
     """
     Prepare training and testing datasets
     """
-    print("[v0] Preparing train/test split...")
+    print("[] Preparing train/test split...")
     
     # Select features for modeling (exclude categorical originals and user_id)
     exclude_cols = ['user_id', 'engaged', 'device_type', 'user_segment', 
@@ -40,9 +40,9 @@ def prepare_train_test_split(df, test_size=0.2, random_state=42):
         X, y, test_size=test_size, random_state=random_state, stratify=y
     )
     
-    print(f"[v0] Training set: {len(X_train)} samples")
-    print(f"[v0] Testing set: {len(X_test)} samples")
-    print(f"[v0] Features used: {len(feature_cols)}")
+    print(f"[] Training set: {len(X_train)} samples")
+    print(f"[] Testing set: {len(X_test)} samples")
+    print(f"[] Features used: {len(feature_cols)}")
     
     # Scale features
     scaler = StandardScaler()
@@ -61,17 +61,17 @@ def prepare_train_test_split(df, test_size=0.2, random_state=42):
 
 def train_logistic_regression(X_train, y_train):
     """Train Logistic Regression model"""
-    print("[v0] Training Logistic Regression...")
+    print("[] Training Logistic Regression...")
     
     model = LogisticRegression(max_iter=1000, random_state=42)
     model.fit(X_train, y_train)
     
-    print("[v0] Logistic Regression training complete")
+    print("[] Logistic Regression training complete")
     return model
 
 def train_random_forest(X_train, y_train):
     """Train Random Forest model"""
-    print("[v0] Training Random Forest...")
+    print("[] Training Random Forest...")
     
     model = RandomForestClassifier(
         n_estimators=100, 
@@ -81,12 +81,12 @@ def train_random_forest(X_train, y_train):
     )
     model.fit(X_train, y_train)
     
-    print("[v0] Random Forest training complete")
+    print("[] Random Forest training complete")
     return model
 
 def train_gradient_boosting(X_train, y_train):
     """Train Gradient Boosting model"""
-    print("[v0] Training Gradient Boosting...")
+    print("[] Training Gradient Boosting...")
     
     model = GradientBoostingClassifier(
         n_estimators=100,
@@ -96,18 +96,18 @@ def train_gradient_boosting(X_train, y_train):
     )
     model.fit(X_train, y_train)
     
-    print("[v0] Gradient Boosting training complete")
+    print("[] Gradient Boosting training complete")
     return model
 
 def save_models(models, model_names):
     """Save trained models"""
-    print("[v0] Saving models...")
+    print("[] Saving models...")
     
     for model, name in zip(models, model_names):
         filepath = f'models/{name}.pkl'
         with open(filepath, 'wb') as f:
             pickle.dump(model, f)
-        print(f"[v0] Saved {name} to {filepath}")
+        print(f"[] Saved {name} to {filepath}")
     
     # Save training metadata
     metadata = {
@@ -121,7 +121,7 @@ def save_models(models, model_names):
 
 # Main execution
 if __name__ == "__main__":
-    print("[v0] Starting model training pipeline...")
+    print("[] Starting model training pipeline...")
     
     # Load data
     df = load_engineered_data()
@@ -147,5 +147,5 @@ if __name__ == "__main__":
     with open('models/test_data.json', 'w') as f:
         json.dump(test_data, f)
     
-    print("[v0] Model training complete!")
-    print(f"[v0] Trained {len(models)} models successfully")
+    print("[] Model training complete!")
+    print(f"[] Trained {len(models)} models successfully")
